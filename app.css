@@ -1,0 +1,92 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    background-color: #ccc;
+}
+
+#content {
+    flex: 1 0;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+#content-preview,
+#ace-editor {
+    flex: 1 0;
+    box-sizing: border-box;
+    height: 400px;
+}
+
+#content-preview {
+    padding: 10px;
+    overflow: scroll;
+    background-color: #fff;
+}
+
+#ide {
+    flex: 0 0 600px;
+    padding: 0;
+
+    align-self: center;
+    border: 1px solid #898989;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 5px #898989;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+#ide-menu {
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+#ide-content {
+    flex: 1 1 auto;
+}
+
+
+.horizontal-menu {
+    flex: 1;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    align-content: flex-start;
+
+    color: #fff;
+    background-color: #333;
+}
+.horizontal-menu,
+.horizontal-menu.align-left {
+    justify-content: flex-start;
+}
+.horizontal-menu.align-right {
+    justify-content: flex-end;
+}
+.horizontal-menu.align-center {
+    justify-content: center;
+}
+
+.menu-item {
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+}
+.menu-item:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+.horizontal-menu > .menu-item {
+    flex: 0 0 34px;
+    padding: 8px;
+}

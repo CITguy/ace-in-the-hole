@@ -1,0 +1,26 @@
+{
+  "name": "ace-in-the-hole",
+  "version": "0.0.1",
+  "authors": [
+    "Ryan A. Johnson <ryan.johnson@rackspace.com>"
+  ],
+  "main": "index.html",
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-marked": "~0.0.21",
+    "angular-sanitize": "~1.2.0",
+    "angular-ui-ace": "~0.2.3",
+    "font-awesome": "~4.4.0",
+    "github-markdown-css": "~2.0.10",
+    "highlightjs": "~8.8.0",
+    "lodash": "~3.10.1"
+  }
+}

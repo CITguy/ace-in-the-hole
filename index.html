@@ -1,0 +1,102 @@
+<!DOCTYPE html!>
+<html lang="en" ng-app="wysiwyg">
+  <head>
+    <title>(prototype) Markdown Editor</title>
+    <!-- web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="bower_components/highlightjs/styles/github-gist.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/github-markdown-css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="app.css" />
+
+    <!-- scripts -->
+
+    <!-- optional? -->
+    <script src="bower_components/lodash/lodash.min.js"></script>
+
+    <!-- required -->
+    <script src="bower_components/highlightjs/highlight.pack.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="bower_components/marked/lib/marked.js"></script>
+    <script src="bower_components/angular-marked/angular-marked.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="editorCtrl">
+    <div id="content">
+      <div id="ide">
+        <div id="ide-menu">
+          <div class="horizontal-menu align-left" ng-show="isEditing">
+            <div class="menu-item" ng-repeat="item in menuItems" ng-click="cmd(item.cmd)">
+              <i class="fa fa-fw fa-{{item.icon}}"></i>
+            </div>
+            <!--
+            <div class="menu-item" ng-click="cmd('undo')">
+              <i class="fa fa-fw fa-undo"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('redo')">
+              <i class="fa fa-fw fa-repeat"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('bold')">
+              <i class="fa fa-fw fa-bold"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('italic')">
+              <i class="fa fa-fw fa-italic"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('strikethrough')">
+              <i class="fa fa-fw fa-strikethrough"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('orderedList')">
+              <i class="fa fa-fw fa-list-ol"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('unorderedList')">
+              <i class="fa fa-fw fa-list-ul"></i>
+            </div>
+            <div class="menu-item">
+              <i class="fa fa-fw fa-ellipsis-h"></i>
+            </div>
+            <div class="menu-item" ng-click="cmd('hyperlink')">
+              <i class="fa fa-fw fa-link"></i>
+            </div>
+            -->
+          </div>
+
+          <div class="horizontal-menu align-right">
+            <div ng-click="togglePreview()" class="menu-item preview-edit">
+              <span ng-if="isEditing">
+                <i class="fa fa-fw fa-eye"></i>
+              </span>
+              <span ng-if="!isEditing">
+                <i class="fa fa-fw fa-pencil"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="ide-content">
+          <div ng-show="isEditing">
+            <div id="ace-editor"
+                 ng-model="textContent"
+                 ng-focus="isEditing"
+                 ui-ace="{
+                   useWrapMode: true,
+                   mode: 'markdown',
+                   showGutter: true,
+                   onLoad: configureAce
+                 }">
+            </div><!-- #ace-editor -->
+          </div>
+
+          <div id="content-preview"
+            class="markdown-body"
+            ng-hide="isEditing"
+            ng-bind-html="preview"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
